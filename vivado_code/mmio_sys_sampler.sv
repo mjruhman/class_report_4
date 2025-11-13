@@ -129,7 +129,7 @@ module mmio_sys_sampler
     );
 
    // slot 9: spi 
-   spi_core #(.S(1)) spi_slot9 
+   chu_spi_core #(.S(1)) spi_slot9 
    (.clk(clk),
     .reset(reset),
     .cs(cs_array[`S9_SPI]),
