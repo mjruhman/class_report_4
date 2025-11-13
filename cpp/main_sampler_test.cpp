@@ -39,7 +39,7 @@ void gsensor_check(SpiCore *spi_p, GpoCore *led_p) {
    z = (float) zraw / raw_max;
 
    // Threshold for 1g reading (raw value is ~63.5 from 127 / 2 above)
-   const int8_t THRESHOLD = 40;
+   const int8_t THRESHOLD = 30;
 
     // Check orientation and light the corresponding LED
    if (yraw > THRESHOLD) {        // +1g on Y-axis
