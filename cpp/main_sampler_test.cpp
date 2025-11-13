@@ -41,21 +41,18 @@ void gsensor_check(SpiCore *spi_p, GpoCore *led_p) {
    // Threshold for 1g reading (raw value is ~63.5 from 127 / 2 above)
    const int8_t THRESHOLD = 30;
 
-    // Check orientation and light the corresponding LED
-   if (yraw > THRESHOLD) {        // +1g on Y-axis
-      led_p->write(0x08); 
-   } else if (xraw > THRESHOLD) { // +1g on X-axis
-      led_p->write(0x01); 
-   } else if (yraw < -THRESHOLD) { // -1g on Y-axis
-      led_p->write(0x02); 
-   } else if (xraw < -THRESHOLD) { // -1g on X-axis
-      led_p->write(0x04); 
+   if (xraw > THRESHOLD){
+        led_p->write(0x01); 
+   } else if (yraw < -THRESHOLD) { 
+        led_p->write(0x02); 
+   } else if (xraw < -THRESHOLD) { 
+        led_p->write(0x04); 
+   } else if (yraw > THRESHOLD) { 
+        led_p->write(0x08); 
    } else {
-      led_p->write(0x00); 
+        led_p->write(0x00); 
    }
 }
-
-
 GpoCore led(get_slot_addr(BRIDGE_BASE, S2_LED));
 SpiCore spi(get_slot_addr(BRIDGE_BASE, S9_SPI));
 
