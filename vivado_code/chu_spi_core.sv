@@ -1,4 +1,4 @@
-module spi_core 
+module chu_spi_core 
     #(parameter S = 2)
     (
         input  logic clk, reset,
