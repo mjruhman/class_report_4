@@ -38,7 +38,6 @@ void gsensor_check(SpiCore *spi_p, GpoCore *led_p) {
    y = (float) yraw / raw_max;
    z = (float) zraw / raw_max;
 
-   // Threshold for 1g reading (raw value is ~63.5 from 127 / 2 above)
    const int8_t THRESHOLD = 30;
 
    if (xraw > THRESHOLD){
