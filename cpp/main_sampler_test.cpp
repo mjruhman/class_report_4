@@ -99,25 +99,6 @@ void gsensor_check(SpiCore *spi_p, GpoCore *led_p) {
 
 
 
-
-
-/**
- * core test
- * @param led_p pointer to led instance
- * @param sw_p pointer to switch instance
- */
-void show_test_id(int n, GpoCore *led_p) {
-   int i, ptn;
-
-   ptn = n; //1 << n;
-   for (i = 0; i < 20; i++) {
-      led_p->write(ptn);
-      sleep_ms(30);
-      led_p->write(0);
-      sleep_ms(30);
-   }
-}
-
 GpoCore led(get_slot_addr(BRIDGE_BASE, S2_LED));
 SpiCore spi(get_slot_addr(BRIDGE_BASE, S9_SPI));
 
