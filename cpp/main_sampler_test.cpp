@@ -1,49 +1,7 @@
-/*****************************************************************//**
- * @file main_sampler_test.cpp
- *
- * @brief Basic test of nexys4 ddr mmio cores
- *
- * @author p chu
- * @version v1.0: initial release
- *********************************************************************/
-
 // #define _DEBUG
 #include "chu_init.h"
 #include "gpio_cores.h"
 #include "spi_core.h"
-
-/**
- * blink once per second for 5 times.
- * provide a sanity check for timer (based on SYS_CLK_FREQ)
- * @param led_p pointer to led instance
- */
-void timer_check(GpoCore *led_p) {
-   int i;
-
-   for (i = 0; i < 5; i++) {
-      led_p->write(0xffff);
-      sleep_ms(500);
-      led_p->write(0x0000);
-      sleep_ms(500);
-      debug("timer check - (loop #)/now: ", i, now_ms());
-   }
-}
-
-/**
- * check individual led
- * @param led_p pointer to led instance
- * @param n number of led
- */
-void led_check(GpoCore *led_p, int n) {
-   int i;
-
-   for (i = 0; i < n; i++) {
-      led_p->write(1, i);
-      sleep_ms(100);
-      led_p->write(0, i);
-      sleep_ms(100);
-   }
-}
 
 
 /**
@@ -96,7 +54,6 @@ void gsensor_check(SpiCore *spi_p, GpoCore *led_p) {
       led_p->write(0x00); 
    }
 }
-
 
 
 GpoCore led(get_slot_addr(BRIDGE_BASE, S2_LED));
